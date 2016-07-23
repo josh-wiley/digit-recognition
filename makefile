@@ -1,10 +1,10 @@
 # Neural Network.
-net:
+net: Network.o
 	g++ Main.cpp Network.o -o net
 
 
 # Network.
-Network.o:
+Network.o: Network.cpp
 	g++ -c Network.cpp
 
 

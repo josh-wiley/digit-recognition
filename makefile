@@ -1,11 +1,11 @@
 # Neural Network.
 net: Network.o
-	g++ Main.cpp Network.o -o net
+	g++ -std=c++11 src/Main.cpp Network.o -o net
 
 
 # Network.
-Network.o: Network.cpp
-	g++ -c Network.cpp
+Network.o: src/Network.cpp
+	g++ -std=c++11 -c src/Network.cpp
 
 
 # Clean.

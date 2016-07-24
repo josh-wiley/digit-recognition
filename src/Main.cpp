@@ -3,24 +3,20 @@
 #include "Network.h"
 
 
-// Scope.
-using namespace std;
-
-
 // Main.
 int main() {
 
 
-  // Save the sizes.
-  int sizes[] = { 4, 2, 1 };
+  // Get the layer sizes.
+  int layerSizes[] = { 4, 2, 1 };
 
 
   // Instantiate new network.
-  Network net(sizes);
+  Network net(layerSizes);
 
 
   // Check.
-  cout << "It's working!\n";
+  std::cout << "It's working!\n";
 
 
 }

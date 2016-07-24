@@ -3,11 +3,11 @@ net: Network.o
 	g++ -std=c++11 src/Main.cpp Network.o -o net
 
 
-# Network.
+# Network class.
 Network.o: src/Network.cpp
 	g++ -std=c++11 -c src/Network.cpp
 
 
-# Clean.
+# Cleanup.
 clean:
 	rm -rf *.o net

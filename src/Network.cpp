@@ -7,7 +7,11 @@ Function Declarations
 */
 
 
+// Neuron activation function (sigmoid).
 float activation(float);
+
+
+// Derivative of neuron activation function (sigmoid).
 float activationPrime(float);
 
 

@@ -2,7 +2,7 @@
 #include <cstddef>    // NULL
 #include <cstdlib>    // srand, rand
 #include <ctime>      // time
-#include <iostream>   // cin, cout, endl (testing only)
+#include <iostream>   // cin, cout, endl
 
 
 // Neural Network class definition.

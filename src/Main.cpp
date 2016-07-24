@@ -1,6 +1,6 @@
 // Headers.
 #include <iostream>
-#include "Network.h"
+#include "Network/Network.h"
 
 
 // Main.

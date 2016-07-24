@@ -4,8 +4,8 @@ net: Network.o
 
 
 # Network class.
-Network.o: src/Network.cpp
-	g++ -std=c++11 -c src/Network.cpp
+Network.o: src/Network/Network.cpp
+	g++ -std=c++11 -c src/Network/Network.cpp
 
 
 # Cleanup.

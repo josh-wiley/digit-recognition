@@ -1,4 +1,4 @@
-# digit-recognition
+# Digit Classification Neural Network
 A simple neural network to classify hand-written digits.
 
 ## Requirements

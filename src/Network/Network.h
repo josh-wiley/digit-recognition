@@ -1,8 +1,7 @@
 // Headers.
 #include <cstddef>    // NULL
-#include <cstdlib>    // srand, rand
-#include <ctime>      // time
 #include <iostream>   // cin, cout, endl
+#include <armadillo>  // imat, fill::randn
 
 
 // Neural Network class definition.
@@ -25,8 +24,8 @@ public:
 private:
   int numLayers = 0;
   int* sizes = NULL;
-  int** biases = NULL;
-  int** weights = NULL;
+  arma::imat biases;
+  arma::imat weights;
 
 
 };

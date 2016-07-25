@@ -25,28 +25,40 @@ Member Function Implementations
 Network::Network(int* layerSizes) {
 
 
-  // Get the number of layers incrementally.
+  // Save the largest layer.
+  int largestLayerSize = 0;
+
+
+  // Get the number of layers and determine largest layer in one sweep.
   for (int i = 0; layerSizes[i] != NULL; i++) {
+
+
+    // Check it the current layer is the largest.
+    if (layerSizes[i] > largestLayerSize) {
+      largestLayerSize = layerSizes[i];
+    }
+
+
+    // Increment the current number of layers.
     numLayers++;
+
+
   }
 
 
-  // Allocate memory for the layer sizes.
+  // Allocate memory for the layer sizes (first layer is input).
   sizes = new int[numLayers];
 
 
-  // Import size values.
+  // Import layer size values.
   for (int i = 0; i < numLayers; i++) {
     sizes[i] = layerSizes[i];
   }
 
 
-  // Seed the random number generator.
-  srand(time(NULL));
-
-
-  // Initialize weights and biases to random integers.
-
+  // Initialize weight and bias matrices to random integers.
+  weights = arma::imat(largestLayerSize, numLayers, arma::fill::randn);
+  biases = arma::imat(largestLayerSize, numLayers - 1, arma::fill::randn);
 
 
 }

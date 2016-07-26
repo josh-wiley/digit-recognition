@@ -12,20 +12,20 @@ class Network {
 public:
   Network(int*);
   ~Network();
-  void feedForward();
-  void learn();
-  void updateBatch();
-  void backwardProp();
-  void evaluate();
-  float costDerivative();
+  void FeedForward();
+  void Learn();
+  void UpdateBatch();
+  void BackwardProp();
+  void Evaluate();
+  float CostDerivative();
 
 
 // Private members.
 private:
-  int numLayers = 0;
-  int* sizes = NULL;
-  arma::imat biases;
-  arma::imat weights;
+  int num_layers_ = 0;
+  int* sizes_ = NULL;
+  arma::imat biases_;
+  arma::imat weights_;
 
 
 };

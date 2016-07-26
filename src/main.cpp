@@ -1,6 +1,6 @@
 // Headers.
 #include <iostream>
-#include "Network/Network.h"
+#include "network/network.h"
 
 
 // Main.
@@ -8,11 +8,11 @@ int main() {
 
 
   // Get the layer sizes.
-  int layerSizes[] = { 4, 2, 1 };
+  int layer_sizes[] = { 4, 2, 1 };
 
 
   // Instantiate new network.
-  Network net(layerSizes);
+  Network net(layer_sizes);
 
 
   // Check.

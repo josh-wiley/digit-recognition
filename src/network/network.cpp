@@ -1,5 +1,5 @@
 // Headers.
-#include "Network.h"
+#include "network.h"
 
 
 /*
@@ -8,11 +8,11 @@ Function Declarations
 
 
 // Neuron activation function (sigmoid).
-float activation(float);
+float Activation(float);
 
 
 // Derivative of neuron activation function (sigmoid).
-float activationPrime(float);
+float ActivationPrime(float);
 
 
 
@@ -22,43 +22,43 @@ Member Function Implementations
 
 
 // Parameterized Constructor.
-Network::Network(int* layerSizes) {
+Network::Network(int* layer_sizes) {
 
 
   // Save the largest layer.
-  int largestLayerSize = 0;
+  int largest_layer_size = 0;
 
 
   // Get the number of layers and determine largest layer in one sweep.
-  for (int i = 0; layerSizes[i] != NULL; i++) {
+  for (int i = 0; layer_sizes[i] != NULL; i++) {
 
 
     // Check it the current layer is the largest.
-    if (layerSizes[i] > largestLayerSize) {
-      largestLayerSize = layerSizes[i];
+    if (layer_sizes[i] > largest_layer_size) {
+      largest_layer_size = layer_sizes[i];
     }
 
 
     // Increment the current number of layers.
-    numLayers++;
+    num_layers_++;
 
 
   }
 
 
   // Allocate memory for the layer sizes (first layer is input).
-  sizes = new int[numLayers];
+  sizes_ = new int[num_layers_];
 
 
   // Import layer size values.
-  for (int i = 0; i < numLayers; i++) {
-    sizes[i] = layerSizes[i];
+  for (int i = 0; i < num_layers_; i++) {
+    sizes_[i] = layer_sizes[i];
   }
 
 
   // Initialize weight and bias matrices to random integers.
-  weights = arma::imat(largestLayerSize, numLayers, arma::fill::randn);
-  biases = arma::imat(largestLayerSize, numLayers - 1, arma::fill::randn);
+  weights_ = arma::imat(largest_layer_size, num_layers_, arma::fill::randn);
+  biases_ = arma::imat(largest_layer_size, num_layers_ - 1, arma::fill::randn);
 
 
 }
@@ -66,32 +66,32 @@ Network::Network(int* layerSizes) {
 
 // Destructor.
 Network::~Network() {
-  delete[] sizes;
+  delete[] sizes_;
 }
 
 
 // Feed forward.
-void Network::feedForward() {}
+void Network::FeedForward() {}
 
 
 // Learn via Stochastic Gradient Descent (SGD).
-void Network::learn() {}
+void Network::Learn() {}
 
 
 // Get a new input batch for the learning algorithm.
-void Network::updateBatch() {}
+void Network::UpdateBatch() {}
 
 
 // Backward propagation.
-void Network::backwardProp() {}
+void Network::BackwardProp() {}
 
 
 // Evaluate.
-void Network::evaluate() {}
+void Network::Evaluate() {}
 
 
 // Derivative of the cost function
-float Network::costDerivative() {}
+float Network::CostDerivative() {}
 
 
 
@@ -101,8 +101,8 @@ Non-member Function Implementations
 
 
 // Sigmoid (activation) function.
-float activation(float);
+float Activation(float);
 
 
 // Derivative of sigmoid (activation) function
-float activationPrime(float);
+float ActivationPrime(float);

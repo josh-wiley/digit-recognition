@@ -1,6 +1,7 @@
 // Headers.
 #include <cstddef>    // NULL
 #include <iostream>   // cin, cout, endl
+#include <vector>     // vector<T>
 #include <armadillo>  // imat, fill::randn
 
 
@@ -23,9 +24,9 @@ public:
 // Private members.
 private:
   int num_layers_ = 0;
-  int* sizes_ = NULL;
-  arma::imat biases_;
-  arma::imat weights_;
+  std::vector<int> sizes_;
+  std::vector<arma::imat> biases_;
+  std::vector<arma::imat> weights_;
 
 
 };

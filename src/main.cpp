@@ -1,5 +1,6 @@
 // Headers.
 #include <iostream>
+#include <memory>
 #include "network/network.h"
 
 
@@ -7,12 +8,12 @@
 int main() {
 
 
-  // Get the layer sizes.
-  int layer_sizes[] = { 4, 2, 1 };
+  // Layer sizes.
+  std::unique_ptr<int> layer_sizes(new int[ 4, 2, 1 ]);
 
 
-  // Instantiate new network.
-  Network net(layer_sizes);
+  // Instantiate new network with layer sizes.
+  Network net( layer_sizes.get() );
 
 
   // Check.

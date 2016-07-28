@@ -25,49 +25,31 @@ Member Function Implementations
 Network::Network(int* layer_sizes) {
 
 
-  // Save the largest layer.
-  int largest_layer_size = 0;
-
-
-  // Get the number of layers and determine largest layer in one sweep.
+  // Import parameter into sizes member.
   for (int i = 0; layer_sizes[i] != NULL; i++) {
-
-
-    // Check it the current layer is the largest.
-    if (layer_sizes[i] > largest_layer_size) {
-      largest_layer_size = layer_sizes[i];
-    }
-
-
-    // Increment the current number of layers.
-    num_layers_++;
-
-
+    sizes_.push_back( layer_sizes[i] );
   }
 
 
-  // Allocate memory for the layer sizes (first layer is input).
-  sizes_ = new int[num_layers_];
+  // Get the number of network layers.
+  num_layers_ = sizes_.size();
 
 
-  // Import layer size values.
-  for (int i = 0; i < num_layers_; i++) {
-    sizes_[i] = layer_sizes[i];
+  // Bias matrices have as many rows as neurons in that layer, and one column (exclude input (1st) layer).
+  // Weight matrices have the same number of rows as the size of the next layer, and the same number of
+  // columns as the size of the current layer.
+  // All matrices are populated with random numbers initially.
+  for (int i = 1; i < num_layers_; i++) {
+    biases_.push_back( arma::imat(sizes_[i], 1, arma::fill::randn) );
+    weights_.push_back( arma::imat(sizes_[i], sizes_[i-1], arma::fill::randn) );
   }
-
-
-  // Initialize weight and bias matrices to random integers.
-  weights_ = arma::imat(largest_layer_size, num_layers_, arma::fill::randn);
-  biases_ = arma::imat(largest_layer_size, num_layers_ - 1, arma::fill::randn);
 
 
 }
 
 
 // Destructor.
-Network::~Network() {
-  delete[] sizes_;
-}
+Network::~Network() {}
 
 
 // Feed forward.

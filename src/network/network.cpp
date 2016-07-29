@@ -21,10 +21,11 @@ Member Function Implementations
 */
 
 
-// Parameterized Constructor.
+// Constructor (Raw pointer).
 Network::Network(int* layer_sizes) {
 
 
+  // TODO: Remove necessity of using NULL in comparison.
   // Import parameter into sizes member.
   for (int i = 0; layer_sizes[i] != NULL; i++) {
     sizes_.push_back( layer_sizes[i] );

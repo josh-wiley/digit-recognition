@@ -3,7 +3,7 @@
 #include <iostream>   // cin, cout, endl
 #include <vector>     // vector<T>
 #include <cmath>      // exp
-#include <armadillo>  // imat, fill::randn
+#include <armadillo>  // mat, fill::randn
 
 
 // Neural Network class definition.

@@ -2,6 +2,7 @@
 #include <cstddef>    // NULL
 #include <iostream>   // cin, cout, endl
 #include <vector>     // vector<T>
+#include <cmath>      // exp
 #include <armadillo>  // imat, fill::randn
 
 
@@ -13,6 +14,8 @@ class Network {
 public:
   Network(int*);
   ~Network();
+
+
   void FeedForward();
   void Learn();
   void UpdateBatch();
@@ -21,12 +24,16 @@ public:
   float CostDerivative();
 
 
+  arma::mat GetBiasAtIndex(int);
+  arma::mat GetWeightAtIndex(int);
+
+
 // Private members.
 private:
   int num_layers_ = 0;
   std::vector<int> sizes_;
-  std::vector<arma::imat> biases_;
-  std::vector<arma::imat> weights_;
+  std::vector<arma::mat> biases_;
+  std::vector<arma::mat> weights_;
 
 
 };

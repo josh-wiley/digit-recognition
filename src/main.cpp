@@ -9,15 +9,16 @@ int main() {
 
 
   // Layer sizes.
-  std::unique_ptr<int> layer_sizes(new int[ 4, 2, 1 ]);
+  int layer_sizes[] = { 4, 2, 1 };
 
 
   // Instantiate new network with layer sizes.
-  Network net( layer_sizes.get() );
+  Network net(layer_sizes);
 
 
   // Check.
-  std::cout << "It's working!\n";
+  std::cout << "\nFirst (non-input) layer bias vector: \n\n" << net.GetBiasAtIndex(0) << std::endl;
+  std::cout << "\nInput-to-first-layer weight matrix: \n\n" << net.GetWeightAtIndex(0) << std::endl;
 
 
 }

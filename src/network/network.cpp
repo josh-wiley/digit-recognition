@@ -8,11 +8,11 @@ Function Declarations
 
 
 // Neuron activation function (sigmoid).
-float Activation(float);
+void Activation(arma::mat&);
 
 
 // Derivative of neuron activation function (sigmoid).
-float ActivationPrime(float);
+void ActivationPrime(arma::mat&);
 
 
 
@@ -40,8 +40,8 @@ Network::Network(int* layer_sizes) {
   // columns as the size of the current layer.
   // All matrices are populated with random numbers initially.
   for (int i = 1; i < num_layers_; i++) {
-    biases_.push_back( arma::imat(sizes_[i], 1, arma::fill::randn) );
-    weights_.push_back( arma::imat(sizes_[i], sizes_[i-1], arma::fill::randn) );
+    biases_.push_back( arma::mat(sizes_[i], 1, arma::fill::randn) );
+    weights_.push_back( arma::mat(sizes_[i], sizes_[i-1], arma::fill::randn) );
   }
 
 
@@ -76,6 +76,18 @@ void Network::Evaluate() {}
 float Network::CostDerivative() {}
 
 
+// Return bias matrix at index.
+arma::mat Network::GetBiasAtIndex(int i) {
+  return biases_[i];
+}
+
+
+// Return bias matrix at index.
+arma::mat Network::GetWeightAtIndex(int i) {
+  return weights_[i];
+}
+
+
 
 /*
 Non-member Function Implementations
@@ -83,8 +95,21 @@ Non-member Function Implementations
 
 
 // Sigmoid (activation) function.
-float Activation(float);
+void Activation(arma::mat& matrix) {
+
+
+  // Activation function.
+  auto activate = [&] (float element) {
+    element = 1 / ( 1 + exp(-element) );
+  };
+
+
+  // Apply activation function element-wise.
+  matrix.for_each(activate);
+
+
+}
 
 
 // Derivative of sigmoid (activation) function
-float ActivationPrime(float);
+void ActivationPrime(arma::mat& matrix) {}
